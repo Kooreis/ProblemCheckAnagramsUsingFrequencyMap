@@ -1,12 +1,9 @@
-function areAnagrams(stringA, stringB) {
-    const charCountMapA = buildCharCountMap(stringA);
-    const charCountMapB = buildCharCountMap(stringB);
+function buildCharCountMap(string) {
+    const charCountMap = {};
 
-    for (let char in charCountMapA) {
-        if (charCountMapA[char] !== charCountMapB[char]) {
-            return false;
-        }
+    for (let char of string.replace(/\W/g, '').toLowerCase()) {
+        charCountMap[char] = charCountMap[char] + 1 || 1;
     }
 
-    return true;
+    return charCountMap;
 }
